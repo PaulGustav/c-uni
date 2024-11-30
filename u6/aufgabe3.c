@@ -8,11 +8,15 @@ int main() {
 	fgets(text, sizeof(text), stdin);
 	text[strcspn(text, "\n")] = '\0';
 
-	for (int i = 0; i < 255; i++) {
-		turned[i] = text[254 - i];
+	size_t length = strlen(text);
+
+	for (int i = 0; i < length; i++) {
+		turned[i] = text[length - i - 1];
 	}
 
-	printf("Rückwärts:\n%s", turned);
+	turned[length] = '\0';
+
+	printf("Rückwärts:\n%s\n", turned);
 
 	return 0;
 }
